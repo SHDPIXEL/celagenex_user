@@ -233,6 +233,7 @@ const Home = () => {
                   className="block w-full py-1.5 mt-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 sm:text-sm border-gray-300 border rounded-lg"
                   accept="images/*,.png,.jpg,.jpeg"
                   onChange={handleDocumentUpload}
+                  required
                 />
               </div>
 
@@ -251,6 +252,7 @@ const Home = () => {
                   className="block w-full py-1.5 mt-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 sm:text-sm border-gray-300 border rounded-lg"
                   accept="video/*"
                   onChange={handleVideoUpload}
+                  required
                 />
                 {videoError && (
                   <p className="text-red-500 text-xs mt-2">{videoError}</p>
