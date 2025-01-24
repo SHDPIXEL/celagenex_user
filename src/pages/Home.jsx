@@ -99,7 +99,7 @@ const Home = () => {
 
       if (response.status === 201) {
         setSuccessMessage(
-          "Your data and your video has been successfully submitted. Please wait while we process your video!"
+          "Your Video Has Been Uploaded Successfully - Thank You!"
         );
         setFormData({
           doctorName: "",
@@ -166,7 +166,6 @@ const Home = () => {
                 <select
                   id="speciality"
                   name="speciality"
-                  value={selectedSpeciality} 
                   className="block w-full py-1.5 mt-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 sm:text-sm border-gray-300 border rounded-lg "
                   onChange={handleInputChange}
                   required
@@ -268,16 +267,6 @@ const Home = () => {
                 </ul>
               </div>
 
-              {/* Submit Button */}
-              <div>
-                <button
-                  type="submit"
-                  className="w-full rounded-md bg-pink-600 py-2 px-4 text-sm font-semibold text-white hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
-                >
-                  Submit
-                </button>
-              </div>
-              {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
               {/* Loader or Success Message */}
               {loading ? (
                 <div className="mt-4 flex justify-center">
@@ -290,10 +279,20 @@ const Home = () => {
                   </div>
                 )
               )}
+
+              {/* Submit Button */}
+              <div>
+                <button
+                  type="submit"
+                  className="w-full rounded-md bg-pink-600 py-2 px-4 text-sm font-semibold text-white hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
+                >
+                  Submit
+                </button>
+              </div>
+              {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
             </form>
           </section>
 
-          {/* Video Section */}
           {/* Video Section */}
           <section className="relative bg-white shadow-md rounded-lg p-6 lg:p-8 overflow-hidden">
             <h2 className="text-xl font-semibold text-gray-800 mb-6">
@@ -308,7 +307,7 @@ const Home = () => {
               />
 
               {/* details */}
-              <div className="z-50 absolute text-white bottom-0.5 left-[45%] text-[10px]/1.5 sm:text-[10px]/2.5">
+              <div className="z-50 absolute text-white bottom-0.5 left-[45%] text-[10px]/1.5 sm:text-[10px]/2.5 text-center">
                 <div className="font-bold sm:text-xs/2.5 text-[5px]">
                   Dr {formData.doctorName || "Doctor Name"}
                 </div>
