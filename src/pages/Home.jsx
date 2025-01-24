@@ -80,6 +80,19 @@ const Home = () => {
     setError("");
     setSuccessMessage("");
 
+     if (
+      !formData.doctorName ||
+      !formData.speciality ||
+      !formData.hospitalName ||
+      !formData.city ||
+      !documentFile ||
+      !videoFile
+    ) {
+      setError("All fields are required. Please fill out all fields.");
+      setLoading(false);
+      return;
+    }
+    
     const data = new FormData();
     data.append("name", formData.doctorName);
     data.append("speciality", formData.speciality);
@@ -282,16 +295,19 @@ const Home = () => {
                 )
               )}
 
+              {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+
               {/* Submit Button */}
               <div>
                 <button
                   type="submit"
+                  disabled={loading}
                   className="w-full rounded-md bg-pink-600 py-2 px-4 text-sm font-semibold text-white hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
                 >
                   Submit
                 </button>
               </div>
-              {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+              
             </form>
           </section>
 
