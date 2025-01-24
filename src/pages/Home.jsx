@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import overlay from "../assets/images/overlay.png";
 import API from "../api";
+import samplevideo from "../assets/sample.mp4"
 
 const Home = () => {
   const [videoFile, setVideoFile] = useState(null);
@@ -119,10 +120,9 @@ const Home = () => {
   };
 
   const Speciality = [
-    "Cardiologist",
-    "Neurologist",
-    "Pediatrician",
-    "Orthopedic",
+    "Gynaecologist",
+    "IVF Specialist",
+    "Consulting Physician"
   ];
 
   return (
@@ -166,7 +166,7 @@ const Home = () => {
                 <select
                   id="speciality"
                   name="speciality"
-                  value={selectedSpeciality} // Add value prop to control the selected option
+                  value={selectedSpeciality} 
                   className="block w-full py-1.5 mt-2 px-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 sm:text-sm border-gray-300 border rounded-lg "
                   onChange={handleInputChange}
                   required
@@ -225,7 +225,7 @@ const Home = () => {
                   htmlFor="document"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Upload Document
+                  Upload Doctors Visiting Card/Doctors Prescription
                 </label>
                 <input
                   type="file"
@@ -258,6 +258,16 @@ const Home = () => {
                 )}
               </div>
 
+              <div>
+                <ul className="text-xs text-gray-500 mt-5 list-disc">
+                  <li>Recommended Video settings - MP4 (H.264)</li>
+                  <li>max video Size - 100MB</li>
+                  <li>max duration - 60 seconds</li>
+                  <li>Aspect ratio 16:9 </li>
+                  <li>Landscape mode video (Horizontal Layout)</li>
+                </ul>
+              </div>
+
               {/* Submit Button */}
               <div>
                 <button
@@ -268,9 +278,22 @@ const Home = () => {
                 </button>
               </div>
               {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+              {/* Loader or Success Message */}
+              {loading ? (
+                <div className="mt-4 flex justify-center">
+                  <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              ) : (
+                successMessage && (
+                  <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md text-center">
+                    <p className="text-sm font-medium">{successMessage}</p>
+                  </div>
+                )
+              )}
             </form>
           </section>
 
+          {/* Video Section */}
           {/* Video Section */}
           <section className="relative bg-white shadow-md rounded-lg p-6 lg:p-8 overflow-hidden">
             <h2 className="text-xl font-semibold text-gray-800 mb-6">
@@ -285,58 +308,39 @@ const Home = () => {
               />
 
               {/* details */}
-              <div className="z-50 absolute text-white bottom-0.5 left-[45%] text-[10px]/2.5">
-                <div className="font-bold">
+              <div className="z-50 absolute text-white bottom-0.5 left-[45%] text-[10px]/1.5 sm:text-[10px]/2.5">
+                <div className="font-bold sm:text-xs/2.5 text-[5px]">
                   Dr {formData.doctorName || "Doctor Name"}
                 </div>
-                <div className="text-[9px] font-semibold">
+                <div className="sm:text-[9px] text-[5px] font-semibold">
                   {formData.speciality || "Speciality"}
                 </div>
-                <div className="text-[9px] font-semibold">
+                <div className="sm:text-[9px] text-[5px] font-semibold">
                   {formData.hospitalName || "Hospital name"}
                 </div>
-                <div className="text-[9px] font-semibold">
+                <div className="sm:text-[9px] text-[5px] font-semibold">
                   {formData.city || "City"}
                 </div>
               </div>
 
               {/* Video Preview */}
-              {videoUrl ? (
+              {videoUrl || samplevideo ? (
                 <video
-                  src={videoUrl} // Use the generated video URL
-                  className="w-full shadow-sm relative z-10"
+                  src={videoUrl || samplevideo} // Use videoUrl if available, otherwise fallback to samplevideo
+                  className="w-full shadow-sm relative z-10 aspect-w-16 aspect-h-9"
                   autoPlay
                 />
               ) : (
-                <div className="flex items-center justify-center h-83 border-dashed border-1 border-gray-300 relative z-10">
+                <div className="flex items-center justify-center h-86 border-dashed border-1 border-gray-300 relative z-10">
                   <p className="text-sm text-gray-500 text-center">
-                    No video uploaded yet. Upload a video to see the preview
-                    here.
+                    No video uploaded yet. Upload a video to see the preview here.
                   </p>
                 </div>
               )}
+
             </div>
-            <div>
-              <ul className="text-xs text-gray-500 mt-5 list-disc">
-                <li>Recommended Video settings - MP4 (H.264)</li>
-                <li>max duration - 60 seconds</li>
-                <li>Aspect ratio 16:9 </li>
-                <li>Landscape mode video (Horizontal Layout)</li>
-              </ul>
-            </div>
-            {/* Loader or Success Message */}
-            {loading ? (
-              <div className="mt-4 flex justify-center">
-                <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            ) : (
-              successMessage && (
-                <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md text-center">
-                  <p className="text-sm font-medium">{successMessage}</p>
-                </div>
-              )
-            )}
           </section>
+
         </div>
       </main>
     </div>
