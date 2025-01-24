@@ -101,7 +101,7 @@ const Login = () => {
                   <input
                     type="text"
                     name="id"
-                    placeholder="Enter your EmployeeId"
+                    placeholder="Enter your Employee Id"
                     id="id"
                     autoComplete="off"
                     value={empCode}
