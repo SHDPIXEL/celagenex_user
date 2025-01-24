@@ -307,17 +307,17 @@ const Home = () => {
               />
 
               {/* details */}
-              <div className="z-50 absolute text-white bottom-0.5 left-[45%] text-[10px]/1.5 sm:text-[10px]/2.5 text-center">
-                <div className="font-bold sm:text-xs/2.5 text-[5px]">
+              <div className="z-50 absolute text-white bottom-0.5 left-[45%] text-[10px]/1.5 sm:text-[10px]/2.5 md:text-[7px] lg:text-[6px] xl:text-[9px]/2 text-center">
+                <div className="font-bold sm:text-xs/2.5 text-[5px] lg:text-[7px]/2 md:text-[6px]/1 xl:text-[9px]/2">
                   Dr {formData.doctorName || "Doctor Name"}
                 </div>
-                <div className="sm:text-[9px] text-[5px] font-semibold">
+                <div className="sm:text-[9px] text-[5px] font-semibold lg:text-[7px]/1.5 md:text-[5px]/1 xl:text-[7px]/2">
                   {formData.speciality || "Speciality"}
                 </div>
-                <div className="sm:text-[9px] text-[5px] font-semibold">
+                <div className="sm:text-[9px] text-[5px] font-semibold lg:text-[7px]/1.5 md:text-[5px]/1 xl:text-[7px]/2">
                   {formData.hospitalName || "Hospital name"}
                 </div>
-                <div className="sm:text-[9px] text-[5px] font-semibold">
+                <div className="sm:text-[9px] text-[5px] font-semibold lg:text-[7px]/1.5 md:text-[5px]/1 xl:text-[7px]/2">
                   {formData.city || "City"}
                 </div>
               </div>
