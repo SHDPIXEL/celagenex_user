@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import overlay from "../assets/images/overlay.png";
 import API from "../api";
@@ -19,6 +20,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleVideoUpload = (event) => {
     const file = event.target.files[0];
@@ -122,6 +124,9 @@ const Home = () => {
         });
         setDocumentFile(null);
         setVideoFile(null);
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("tokenExpiry");
+        navigate("/login");
       } else {
         setError("Failed to submit the form. Please try again.");
       }
