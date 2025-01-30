@@ -114,7 +114,7 @@ const Home = () => {
 
       if (response.status === 201) {
         setSuccessMessage(
-          "Your Video Has Been Uploaded Successfully - Thank You!"
+          "Your Video Has Been Successfully Submitted - Kindly Upload Your Next Video!"
         );
         setFormData({
           doctorName: "",
@@ -124,9 +124,7 @@ const Home = () => {
         });
         setDocumentFile(null);
         setVideoFile(null);
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("tokenExpiry");
-        navigate("/login");
+        
       } else {
         setError("Failed to submit the form. Please try again.");
       }
