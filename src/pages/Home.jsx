@@ -129,7 +129,7 @@ const Home = () => {
         setError("Failed to submit the form. Please try again.");
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      setError("An error occurred. Please try again. [${err}]");
     } finally {
       setLoading(false);
     }
