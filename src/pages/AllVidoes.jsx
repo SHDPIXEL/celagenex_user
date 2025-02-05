@@ -12,6 +12,7 @@ const AllVideo = () => {
       try {
         const response = await API.get("/auth/user/getAllVideos");
         setVideos(response.data.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
         setVideos([]);
