@@ -40,7 +40,7 @@ const AllVideo = () => {
                 doctorName=""
                 hospitalName="" 
                 city="" 
-                videoFile={video.video}
+                videoFile={video.video.replace('/var/www/back', '')}
               />
             ))}
             
