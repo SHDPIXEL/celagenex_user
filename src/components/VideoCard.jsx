@@ -17,7 +17,7 @@ const VideoCard = ({ doctorName, hospitalName, city, videoFile }) => {
                 <div className="relative">
                     {/* Video Thumbnail */}
                     <img
-                        src={videoFile}
+                         src={`https://api.cholinationdrive.needsunleashed.com/${videoFile}`}
                         alt="Video Thumbnail"
                         className="w-full h-48 object-cover"
                     />
@@ -25,11 +25,11 @@ const VideoCard = ({ doctorName, hospitalName, city, videoFile }) => {
                         Play Video
                     </div>
                 </div>
-                <div className="p-4">
+{/*                 <div className="p-4">
                     <div className="font-semibold text-gray-800">{doctorName}</div>
                     <div className="text-sm text-gray-500">{hospitalName}</div>
                     <div className="text-xs text-gray-400">{city}</div>
-                </div>
+                </div> */}
             </div>
 
             {/* Modal */}
@@ -44,7 +44,7 @@ const VideoCard = ({ doctorName, hospitalName, city, videoFile }) => {
                                 X
                             </button>
                             <video
-                                src={videoFile}
+                                src={`https://api.cholinationdrive.needsunleashed.com/${videoFile}`}
                                 controls
                                 className="w-full rounded-lg shadow-md"
                             />
