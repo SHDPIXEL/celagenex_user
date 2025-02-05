@@ -16,11 +16,12 @@ const VideoCard = ({ doctorName, hospitalName, city, videoFile }) => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onClick={handleCardClick}>
                 <div className="relative">
                     {/* Video Thumbnail */}
-                    <img
-                         src={`https://api.cholinationdrive.needsunleashed.com/${videoFile}`}
-                        alt="Video Thumbnail"
-                        className="w-full h-48 object-cover"
-                    />
+                    <video
+                                src={`https://api.cholinationdrive.needsunleashed.com/${videoFile}`}
+                                controls="false"
+                        autoplay="false"
+                                className="w-full h-48 object-cover"
+                            />
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-lg font-bold">
                         Play Video
                     </div>
@@ -39,7 +40,7 @@ const VideoCard = ({ doctorName, hospitalName, city, videoFile }) => {
                         <div className="relative">
                             <button
                                 onClick={handleCloseModal}
-                                className="absolute top-2 right-2 text-white font-bold bg-gray-800 p-2 rounded-full"
+                                className="absolute top-2 z-10 right-2 text-white font-bold bg-gray-800 p-2 rounded-full"
                             >
                                 X
                             </button>
