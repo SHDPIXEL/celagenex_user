@@ -53,9 +53,9 @@ const AllVideo = () => {
             {videos.map((video) => (
               <VideoCard
                 key={video.id}
-                doctorName="{video.form.name}"
-                hospitalName="{video.form.hospital}"
-                city="{video.form.city}"
+                doctorName={video.form.name}
+                hospitalName={video.form.hospital}
+                city={video.form.city}
                 videoFile={video.video.replace("/var/www/back", "")}
               />
             ))}
