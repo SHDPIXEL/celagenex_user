@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import VideoCard from "../components/VideoCard";
-import overlay from "../assets/images/overlay.png";
 import API from "../api";
 import SearchBar from "../components/SearchBar";
 
 const AllVideo = () => {
   const [videos, setVideos] = useState([]);
+  const [allVideos, setAllVideos] = useState([]); // Store all videos
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await API.get("/auth/user/getAllVideos");
         setVideos(response.data.data);
-        console.log(response.data);
+        setAllVideos(response.data.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
         setVideos([]);
@@ -23,17 +23,30 @@ const AllVideo = () => {
     fetchData();
   }, []);
 
+
+  const handleSearch = (searchResults) => {
+    if (!searchResults.length) {
+      setVideos(allVideos);
+    } else {
+      setVideos(searchResults);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 poppins-regular">
       <Header />
       <main className="px-20">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl/7 poppins-bold text-[#333] sm:truncate sm:text-3xl sm:tracking-tight">
-            All Uploaded Videos
-          </h2>
-          <SearchBar />
+        <div className="flex flex-col md:flex-row items-start sm:items-center justify-between gap-2">
+          <div>
+            <h2 className="text-2xl/7 poppins-bold text-[#333] sm:truncate sm:text-3xl sm:tracking-tight">
+              All Uploaded Videos
+            </h2>
+            <sub>Total {videos.length} Videos.</sub>
+          </div>
+          <div className="w-full sm:w-auto">
+            <SearchBar onSearch={handleSearch} />
+          </div>
         </div>
-        <sub>Total {videos.length} Videos.</sub>
 
         <section className="space-y-8 mt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -43,10 +56,9 @@ const AllVideo = () => {
                 doctorName=""
                 hospitalName=""
                 city=""
-                videoFile={video.video.replace('/var/www/back', '')}
+                videoFile={video.video.replace("/var/www/back", "")}
               />
             ))}
-
           </div>
         </section>
       </main>
