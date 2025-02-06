@@ -25,7 +25,7 @@ const VideoCard = ({ doctorName, hospitalName, city, videoFile }) => {
                     </div>
                 </div>
                 <div className="p-4">
-                    <div className="font-semibold text-gray-800">{doctorName}</div>
+                    <div className="font-semibold text-gray-800">Dr. {doctorName}</div>
                     <div className="text-sm text-gray-500">{hospitalName}</div>
                     <div className="text-xs text-gray-400">{city}</div>
                 </div>
