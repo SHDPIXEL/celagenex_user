@@ -11,18 +11,18 @@ const SearchBar = ({ onSearch }) => {
     onSearch("");
   };
 
-  const handleSearch = async () => {
-    if (!searchQuery.trim()) return;
-    try {
-      const response = await API.post("/auth/user/searchVideos", {
-        query: searchQuery,
-      });
-      onSearch(response.data.data);
-    } catch (error) {
-      console.error("Search Error", error);
-      onSearch([]);
-    }
-  };
+const handleSearch = async () => {
+  if (!searchQuery.trim()) return;
+  try {
+    const response = await API.get("/auth/user/searchVideos", {
+      params: { q: searchQuery }  // Correct way to pass query parameters
+    });
+    onSearch(response.data.data);
+  } catch (error) {
+    console.error("Search Error", error);
+    onSearch([]);
+  }
+};
 
   return (
     <div
