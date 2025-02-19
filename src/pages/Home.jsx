@@ -130,7 +130,7 @@ const Home = () => {
       }
     } catch (err) {
       console.log(err);
-      console.log(err.data);
+      console.log(err.error);
 
       setError(`An error occurred. Please try again. [${err}]`);
     } finally {
