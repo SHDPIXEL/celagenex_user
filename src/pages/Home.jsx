@@ -129,7 +129,10 @@ const Home = () => {
         setError("Failed to submit the form. Please try again.");
       }
     } catch (err) {
-      setError(`An error occurred. Please try again. [${err.data.error}]`);
+      console.log(err);
+      console.log(err.data);
+      console.log(err.data.error);
+      setError(`An error occurred. Please try again. [${err}]`);
     } finally {
       setLoading(false);
     }
