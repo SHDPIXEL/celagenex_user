@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import AllVideo from './pages/AllVidoes';
+import Videos from './pages/AllVidoes'
 import UserVideo from './pages/UserVideo';
 import ProtectedRoute from './helper/ProtectedRoute';// Import the ProtectedRoute component
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           {/* Public Route */}
           <Route path="/login" element={<Login />} />
+          <Route path="/videos" element={<Videos />} />
 
           {/* Protected Routes */}
           <Route
