@@ -57,7 +57,7 @@ const AllVideo = () => {
             <h2 className="text-2xl/7 poppins-bold text-[#333] sm:truncate sm:text-3xl sm:tracking-tight">
               All Uploaded Videos
             </h2>
-            <sub>Total {videos.length} Videos.</sub>
+            <sub>Total {videos.length} Videos Showing.</sub>
           </div>
           <div className="w-full sm:w-auto">
             <SearchBar onSearch={handleSearch} />
