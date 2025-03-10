@@ -79,7 +79,7 @@ const AllVideo = () => {
         </section>
 
         {/* Pagination Controls */}
-        <div className="flex justify-center items-center mt-10 mb-5 space-x-4">
+        <div className="flex justify-center items-center mt-10 pb-5 space-x-4">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
