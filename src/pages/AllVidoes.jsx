@@ -10,6 +10,7 @@ const AllVideo = () => {
   const [allVideos, setAllVideos] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [allVideosCount, setAllVideosCount] = useState(0);
   const limit = 9; // Number of videos per page
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const AllVideo = () => {
       // console.log("API Response:", response.data); // Debugging
       setVideos(response.data.data);
       setAllVideos(response.data.data);
+      setAllVideosCount(response.data.allVideosCount)
       
       const total = response.data.pagination?.totalPages || 1; // Default to 1 if undefined
       // console.log("Total Pages:", total);
@@ -51,13 +53,13 @@ const AllVideo = () => {
   return (
     <div className="min-h-screen bg-gray-100 poppins-regular">
       <Header />
-      <main className="px-20">
+      <main className="md:px-20 px-4">
         <div className="flex flex-col md:flex-row items-start sm:items-center justify-between gap-2">
           <div>
             <h2 className="text-2xl/7 poppins-bold text-[#333] sm:truncate sm:text-3xl sm:tracking-tight">
               All Uploaded Videos
             </h2>
-            <sub>Total {videos.length} Videos Showing.</sub>
+            <sub>Total {videos.length} Videos Showing of {allVideosCount}</sub>
           </div>
           <div className="w-full sm:w-auto">
             <SearchBar onSearch={handleSearch} />
